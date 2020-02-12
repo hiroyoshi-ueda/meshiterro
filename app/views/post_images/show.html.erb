@@ -1,5 +1,5 @@
 <section class="sct-color-1 slice">
-  <div class="container">
+  <div class="container-fluid masonry-container">
     <div class="row">
       <div class="col-md-12 post_images_container">
         <div class="post-item">
@@ -36,8 +36,13 @@
               </li>
             <% end %>
             <li>
-              <i class="fa fa-comment"></i>
+              <i class="fa fa-comment"> </i>
               <a href="#comments"><%= @post_image.post_comments.count %></a>
+            </li>
+            <li>
+              <% if @post_image.user == current_user %>
+                <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+              <% end %>
             </li>
           </ul>
           <div class="post-content-inner mt-20">
